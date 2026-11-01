@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "id": "dbf95cfc-3f82-45e6-a54b-624f46eafb32",
+    "name": "كرامة",
+    "price": 100000000000,
+    "category": "أغذية الحيوانات",
+    "description": "كرامة للماعنده كرامة وهم غاليه متحصلها",
+    "tag": "جديد وحصري",
+    "is_active": true,
+    "in_stock": true,
+    "image_path": "assets/products/4557c3fa-c1ac-4610-828e-f32e640b18e4.png",
+    "image_url": "assets/products/4557c3fa-c1ac-4610-828e-f32e640b18e4.png"
+  }
+]
