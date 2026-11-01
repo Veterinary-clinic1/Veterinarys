@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Furkan Is The Best</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #080812;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: clamp(30px, 8vw, 75px);
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(
+        90deg, #00ffff, #ae00ff, #ff0080
+      );
+      background-size: 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        background-position: 0%;
+        filter: drop-shadow(0 0 10px #00ffff);
+      }
+
+      50% {
+        background-position: 100%;
+        filter: drop-shadow(0 0 25px #ae00ff);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Furkan Is The Best</h1>
+</body>
+</html>
