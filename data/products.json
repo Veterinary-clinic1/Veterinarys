@@ -1,5 +1,17 @@
 [
   {
+    "id": "09dfa617-cc42-42d3-9882-2bbda67e82af",
+    "name": "كرامة",
+    "price": 100000000000,
+    "category": "أغذية الحيوانات",
+    "description": "",
+    "tag": "",
+    "is_active": true,
+    "in_stock": true,
+    "image_path": "assets/products/1ec8bb6d-1af1-4896-8f88-bb0318e46633.jpg",
+    "image_url": "assets/products/1ec8bb6d-1af1-4896-8f88-bb0318e46633.jpg"
+  },
+  {
     "id": "dbf95cfc-3f82-45e6-a54b-624f46eafb32",
     "name": "كرامة",
     "price": 100000000000,
