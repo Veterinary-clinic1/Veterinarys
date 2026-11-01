@@ -81,10 +81,10 @@ document.getElementById('checkoutForm').addEventListener('submit', async e=>{
     closeCart();
     document.getElementById('checkoutModal').classList.add('hidden');
     form.reset();
-    alert('تم إرسال الطلب من المتصفح. تأكد من وصوله فعلياً إلى بوت التليگرام؛ لا يمكن للموقع التحقق من النتيجة بهذه الطريقة.');
+    alert('تم إرسال الطلب بنجاح شكرًا لكم,سيتم الرد باقرب وقت');
   }catch(error){
     console.error('Telegram request failed:',error);
-    alert('تعذر الاتصال بتيليگرام. تأكد من الإنترنت والتوكن وجرب مرة ثانية.');
+    alert('هنالك مشكله في الارساله, يرجى مراسله الحساب الخصا وشكرا.');
   }finally{
     button.disabled=false;
     button.textContent='إرسال الطلب عبر المتجر ←';
