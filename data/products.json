@@ -1,5 +1,17 @@
 [
   {
+    "id": "cc61528e-fa02-4db6-9444-e4d7504ee7b5",
+    "name": "مكافأة كلاب",
+    "price": 5000,
+    "category": "أغذية الحيوانات",
+    "description": "مكافأة كلاب",
+    "tag": "",
+    "is_active": true,
+    "in_stock": true,
+    "image_path": "assets/products/a02cdafc-f516-4496-a280-b0562c1afb35.jpg",
+    "image_url": "assets/products/a02cdafc-f516-4496-a280-b0562c1afb35.jpg"
+  },
+  {
     "id": "f4f820e9-78b3-4b37-81f7-5d9a94c5c376",
     "name": "معلب دولمه مهروس ادلت",
     "price": 2000,
