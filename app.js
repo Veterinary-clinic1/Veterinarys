@@ -1,14 +1,5 @@
 
-const demoProducts=[
-{id:'demo-1',name:'طعام جاف للقطط',category:'أغذية الحيوانات',description:'تركيبة يومية متوازنة للقطط البالغة.',price:18000,emoji:'🐈',tag:'الأكثر طلباً',image_url:null,in_stock:true,animal:'cats'},
-{id:'demo-2',name:'طعام جاف للكلاب',category:'أغذية الحيوانات',description:'وجبة متكاملة لدعم النشاط والحيوية.',price:22000,emoji:'🐕',tag:'مختار',image_url:null,in_stock:true,animal:'dogs'},
-{id:'demo-3',name:'شامبو للحيوانات',category:'العناية والنظافة',description:'للعناية بالفرو والتنظيف اللطيف.',price:7500,emoji:'🧴',tag:'',image_url:null,in_stock:true,animal:'all'},
-{id:'demo-4',name:'فرشاة تمشيط',category:'الإكسسوارات',description:'تساعد على ترتيب الفرو وتقليل التشابك.',price:6000,emoji:'🪮',tag:'',image_url:null,in_stock:true,animal:'all'},
-{id:'demo-5',name:'حامل طعام وماء',category:'الإكسسوارات',description:'وعاء عملي للاستخدام اليومي.',price:9000,emoji:'🥣',tag:'',image_url:null,in_stock:true,animal:'all'},
-{id:'demo-6',name:'قفازات تنظيف',category:'العناية والنظافة',description:'مناسبة للعناية اليومية بفرو الحيوان.',price:4500,emoji:'🧤',tag:'جديد',image_url:null,in_stock:true,animal:'all'},
-{id:'demo-7',name:'حقيبة إسعافات أولية',category:'المستلزمات البيطرية',description:'مستلزمات أساسية للعناية الأولية.',price:15000,emoji:'🩺',tag:'',image_url:null,in_stock:true,animal:'all'},
-{id:'demo-8',name:'لعبة تفاعلية',category:'الإكسسوارات',description:'وقت لعب ونشاط لصديقك الأليف.',price:5000,emoji:'🧶',tag:'',image_url:null,in_stock:true,animal:'all'}
-];
+const demoProducts=[{id:'demo-1',name:'طعام جاف للقطط',category:'أغذية الحيوانات',description:'تركيبة يومية متوازنة للقطط البالغة.',price:18000,emoji:'🐈',tag:'الأكثر طلباً',image_url:null,in_stock:true,animal:'cats'},{id:'demo-2',name:'طعام جاف للكلاب',category:'أغذية الحيوانات',description:'وجبة متكاملة لدعم النشاط والحيوية.',price:22000,emoji:'🐕',tag:'مختار',image_url:null,in_stock:true,animal:'dogs'},{id:'demo-3',name:'شامبو للحيوانات',category:'العناية والنظافة',description:'للعناية بالفرو والتنظيف اللطيف.',price:7500,emoji:'🧴',tag:'',image_url:null,in_stock:true,animal:'all'},{id:'demo-4',name:'فرشاة تمشيط',category:'الإكسسوارات',description:'تساعد على ترتيب الفرو وتقليل التشابك.',price:6000,emoji:'🪮',tag:'',image_url:null,in_stock:true,animal:'all'},{id:'demo-5',name:'حامل طعام وماء',category:'الإكسسوارات',description:'وعاء عملي للاستخدام اليومي.',price:9000,emoji:'🥣',tag:'',image_url:null,in_stock:true,animal:'all'},{id:'demo-6',name:'قفازات تنظيف',category:'العناية والنظافة',description:'مناسبة للعناية اليومية بفرو الحيوان.',price:4500,emoji:'🧤',tag:'جديد',image_url:null,in_stock:true,animal:'all'},{id:'demo-7',name:'حقيبة إسعافات أولية',category:'المستلزمات البيطرية',description:'مستلزمات أساسية للعناية الأولية.',price:15000,emoji:'🩺',tag:'',image_url:null,in_stock:true,animal:'all'},{id:'demo-8',name:'لعبة تفاعلية',category:'الإكسسوارات',description:'وقت لعب ونشاط لصديقك الأليف.',price:5000,emoji:'🧶',tag:'',image_url:null,in_stock:true,animal:'all'}];
 let products=[],activeCategory='الكل',activeAnimal='all',cart=[];
 const money=n=>new Intl.NumberFormat('en-US').format(Number(n)||0)+' د.ع';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -23,7 +14,6 @@ function renderProducts(){
  productGrid.innerHTML=list.map(p=>`<article class="product-card"><div class="product-image">${p.image_url?`<img src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:8px">`:`<span class="product-placeholder">${p.emoji||'🐾'}</span>`}${p.tag?`<span class="product-tag">${esc(p.tag)}</span>`:''}</div><div class="product-info"><span class="product-category">${esc(p.category)}</span><h3>${esc(p.name)}</h3><p>${esc(p.description)}</p><div class="product-bottom"><span class="price">${money(p.price)}</span><button class="add-btn" aria-label="أضف ${esc(p.name)} للسلة" onclick="addToCart('${esc(p.id)}')" ${p.in_stock===false?'disabled':''}>${p.in_stock===false?'×':'+'}</button></div></div></article>`).join('');
  document.getElementById('emptyState').classList.toggle('hidden',list.length>0);
 }
-
 function setCategory(cat){
  activeCategory=cat;
  document.querySelectorAll('[data-category]').forEach(el=>el.classList.toggle('active',el.dataset.category===cat));
@@ -31,14 +21,12 @@ function setCategory(cat){
  renderProducts();
 }
 document.querySelectorAll('[data-category]').forEach(el=>el.addEventListener('click',()=>setCategory(el.dataset.category)));
-
 function setAnimal(animal){
  activeAnimal=animal;
  document.querySelectorAll('[data-animal]').forEach(el=>el.classList.toggle('selected',el.dataset.animal===animal));
  renderProducts();
 }
 document.querySelectorAll('[data-animal]').forEach(el=>el.addEventListener('click',()=>setAnimal(el.dataset.animal)));
-
 document.getElementById('searchInput').addEventListener('input',renderProducts);
 document.getElementById('sortSelect').addEventListener('change',renderProducts);
 
@@ -102,7 +90,6 @@ document.getElementById('checkoutForm').addEventListener('submit',async e=>{
   button.disabled=false;button.textContent='إرسال الطلب عبر المتجر ←';
  }
 });
-
 document.getElementById('menuToggle').onclick=()=>document.querySelector('.desktop-nav').classList.toggle('show');
 document.getElementById('year').textContent=new Date().getFullYear();
 
