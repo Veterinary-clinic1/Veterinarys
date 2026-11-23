@@ -1,5 +1,17 @@
 [
   {
+    "id": "87ab0d8b-85d0-4d6c-97eb-8bb100ca1a54",
+    "name": "Test 6",
+    "price": 1200,
+    "category": "أغذية الحيوانات",
+    "description": "",
+    "tag": "",
+    "is_active": true,
+    "in_stock": true,
+    "image_path": "",
+    "image_url": ""
+  },
+  {
     "id": "fe161a80-4629-46e4-b480-fa0b3abeb4b9",
     "name": "Test 5",
     "price": 15000,
