@@ -1,5 +1,17 @@
 [
   {
+    "id": "b58c9bd1-9eb1-487d-a001-234d9de1dcc7",
+    "name": "Test 1",
+    "price": 2000,
+    "category": "أغذية الحيوانات",
+    "description": "",
+    "tag": "",
+    "is_active": true,
+    "in_stock": true,
+    "image_path": "assets/products/29fdf470-d013-409a-a7a3-9dafd71fe29c.jpg",
+    "image_url": "assets/products/29fdf470-d013-409a-a7a3-9dafd71fe29c.jpg"
+  },
+  {
     "id": "cc61528e-fa02-4db6-9444-e4d7504ee7b5",
     "name": "مكافأة كلاب",
     "price": 5000,
