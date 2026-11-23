@@ -1,9 +1,85 @@
-
 const demoProducts=[{id:'demo-1',name:'طعام جاف للقطط',category:'أغذية الحيوانات',description:'تركيبة يومية متوازنة للقطط البالغة.',price:18000,emoji:'🐈',tag:'الأكثر طلباً',image_url:null,in_stock:true,animal:'cats'},{id:'demo-2',name:'طعام جاف للكلاب',category:'أغذية الحيوانات',description:'وجبة متكاملة لدعم النشاط والحيوية.',price:22000,emoji:'🐕',tag:'مختار',image_url:null,in_stock:true,animal:'dogs'},{id:'demo-3',name:'شامبو للحيوانات',category:'العناية والنظافة',description:'للعناية بالفرو والتنظيف اللطيف.',price:7500,emoji:'🧴',tag:'',image_url:null,in_stock:true,animal:'all'},{id:'demo-4',name:'فرشاة تمشيط',category:'الإكسسوارات',description:'تساعد على ترتيب الفرو وتقليل التشابك.',price:6000,emoji:'🪮',tag:'',image_url:null,in_stock:true,animal:'all'},{id:'demo-5',name:'حامل طعام وماء',category:'الإكسسوارات',description:'وعاء عملي للاستخدام اليومي.',price:9000,emoji:'🥣',tag:'',image_url:null,in_stock:true,animal:'all'},{id:'demo-6',name:'قفازات تنظيف',category:'العناية والنظافة',description:'مناسبة للعناية اليومية بفرو الحيوان.',price:4500,emoji:'🧤',tag:'جديد',image_url:null,in_stock:true,animal:'all'},{id:'demo-7',name:'حقيبة إسعافات أولية',category:'المستلزمات البيطرية',description:'مستلزمات أساسية للعناية الأولية.',price:15000,emoji:'🩺',tag:'',image_url:null,in_stock:true,animal:'all'},{id:'demo-8',name:'لعبة تفاعلية',category:'الإكسسوارات',description:'وقت لعب ونشاط لصديقك الأليف.',price:5000,emoji:'🧶',tag:'',image_url:null,in_stock:true,animal:'all'}];
-let products=[],activeCategory='الكل',activeAnimal='all',cart=[];
+
+let products=[],activeCategory='الكل',activeAnimal='all',cart=[],currentScreen='welcome';
+
 const money=n=>new Intl.NumberFormat('en-US').format(Number(n)||0)+' د.ع';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const productGrid=document.getElementById('productGrid');
+const animalGrid=document.querySelector('.animal-grid');
+const animalNames={cats:'القطط',dogs:'الكلاب',poultry:'الدواجن',birds:'الطيور',other:'أخرى'};
+const screens={
+ welcome:[document.querySelector('.hero'),document.querySelector('.trust-strip')],
+ animals:[document.getElementById('animals')],
+ store:[document.getElementById('categories'),document.querySelector('.products-section'),document.getElementById('about')]
+};
+
+const style=document.createElement('style');
+style.textContent=`
+.screen-back{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:12px;padding:11px 18px;background:#eaf6fc;color:#0788c9;font:inherit;font-weight:700;cursor:pointer;margin-bottom:18px}
+.screen-enter{animation:screenEnter .5s ease both}
+@keyframes screenEnter{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.animal-card.selected{outline:3px solid #078dcc;outline-offset:3px}
+body.screen-welcome .desktop-nav a,body.screen-animals .desktop-nav a{pointer-events:none}
+`;
+document.head.appendChild(style);
+
+function showScreen(name){
+ currentScreen=name;
+ Object.entries(screens).forEach(([key,elements])=>elements.forEach(el=>{
+  if(!el)return;
+  el.style.display=key===name?'':'none';
+  if(key===name){el.classList.remove('screen-enter');void el.offsetWidth;el.classList.add('screen-enter')}
+ }));
+ document.querySelector('footer').style.display=name==='store'?'':'none';
+ document.body.classList.remove('screen-welcome','screen-animals','screen-store');
+ document.body.classList.add('screen-'+name);
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function addBackButton(container,label,action){
+ if(!container)return;
+ let btn=container.querySelector('.screen-back');
+ if(!btn){btn=document.createElement('button');btn.className='screen-back';container.prepend(btn)}
+ btn.type='button';btn.textContent='→ '+label;btn.onclick=action;
+}
+
+const animalHead=document.querySelector('#animals .section-head');
+const categoryHead=document.querySelector('#categories .section-head');
+addBackButton(animalHead,'رجوع للرئيسية',()=>showScreen('welcome'));
+addBackButton(categoryHead,'رجوع لاختيار الحيوان',()=>showScreen('animals'));
+
+function goAnimals(){if(currentScreen==='welcome')showScreen('animals')}
+function goStore(animal){
+ if(!animalNames[animal])return;
+ activeAnimal=animal;
+ activeCategory='الكل';
+ document.querySelectorAll('[data-animal]').forEach(el=>el.classList.toggle('selected',el.dataset.animal===animal));
+ setCategory('الكل');
+ const heading=document.querySelector('#categories h2');
+ if(heading)heading.textContent='أقسام '+animalNames[animal];
+ showScreen('store');
+ renderProducts();
+}
+
+if(animalGrid&&!animalGrid.querySelector('[data-animal="other"]')){
+ animalGrid.insertAdjacentHTML('beforeend',`<button class="animal-card" type="button" data-animal="other"><div class="animal-image"><span style="font-size:65px;display:grid;place-items:center;height:100%">🐾</span></div><div class="animal-info"><b>أخرى</b><span>منتجات ومستلزمات أخرى ←</span></div></button>`);
+}
+
+document.querySelector('main').addEventListener('click',e=>{
+ if(currentScreen!=='welcome')return;
+ e.preventDefault();
+ goAnimals();
+});
+
+document.querySelectorAll('.desktop-nav a').forEach(a=>a.addEventListener('click',e=>{
+ if(currentScreen==='welcome'){e.preventDefault();goAnimals()}
+ else if(currentScreen==='animals'){e.preventDefault()}
+}));
+
+animalGrid?.addEventListener('click',e=>{
+ const card=e.target.closest('[data-animal]');
+ if(card)goStore(card.dataset.animal);
+});
 
 function renderProducts(){
  const search=document.getElementById('searchInput').value.trim().toLocaleLowerCase('ar');
@@ -14,6 +90,7 @@ function renderProducts(){
  productGrid.innerHTML=list.map(p=>`<article class="product-card"><div class="product-image">${p.image_url?`<img src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy" style="width:100%;height:100%;object-fit:contain;padding:8px">`:`<span class="product-placeholder">${p.emoji||'🐾'}</span>`}${p.tag?`<span class="product-tag">${esc(p.tag)}</span>`:''}</div><div class="product-info"><span class="product-category">${esc(p.category)}</span><h3>${esc(p.name)}</h3><p>${esc(p.description)}</p><div class="product-bottom"><span class="price">${money(p.price)}</span><button class="add-btn" aria-label="أضف ${esc(p.name)} للسلة" onclick="addToCart('${esc(p.id)}')" ${p.in_stock===false?'disabled':''}>${p.in_stock===false?'×':'+'}</button></div></div></article>`).join('');
  document.getElementById('emptyState').classList.toggle('hidden',list.length>0);
 }
+
 function setCategory(cat){
  activeCategory=cat;
  document.querySelectorAll('[data-category]').forEach(el=>el.classList.toggle('active',el.dataset.category===cat));
@@ -21,12 +98,6 @@ function setCategory(cat){
  renderProducts();
 }
 document.querySelectorAll('[data-category]').forEach(el=>el.addEventListener('click',()=>setCategory(el.dataset.category)));
-function setAnimal(animal){
- activeAnimal=animal;
- document.querySelectorAll('[data-animal]').forEach(el=>el.classList.toggle('selected',el.dataset.animal===animal));
- renderProducts();
-}
-document.querySelectorAll('[data-animal]').forEach(el=>el.addEventListener('click',()=>setAnimal(el.dataset.animal)));
 document.getElementById('searchInput').addEventListener('input',renderProducts);
 document.getElementById('sortSelect').addEventListener('change',renderProducts);
 
@@ -90,6 +161,7 @@ document.getElementById('checkoutForm').addEventListener('submit',async e=>{
   button.disabled=false;button.textContent='إرسال الطلب عبر المتجر ←';
  }
 });
+
 document.getElementById('menuToggle').onclick=()=>document.querySelector('.desktop-nav').classList.toggle('show');
 document.getElementById('year').textContent=new Date().getFullYear();
 
@@ -99,7 +171,7 @@ async function loadStoreProducts(){
   if(!response.ok)throw new Error(`HTTP ${response.status}`);
   const data=await response.json();
   if(!Array.isArray(data))throw new Error('صيغة ملف المنتجات غير صحيحة');
-  products=data.filter(p=>p&&p.is_active===true).map(p=>({...p,price:Number(p.price)||0,animal:p.animal||'all'}));
+  products=data.filter(p=>p&&p.is_active===true).map(p=>({...p,price:Number(p.price)||0,image_url:p.image_url||p.image_path||null,animal:p.animal||'all'}));
   renderProducts();renderCart();
  }catch(error){
   console.error('تعذر تحميل منتجات GitHub:',error.message);
@@ -109,4 +181,6 @@ async function loadStoreProducts(){
   empty.classList.remove('hidden');
  }
 }
+
+showScreen('welcome');
 renderProducts();renderCart();loadStoreProducts();
