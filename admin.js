@@ -1,3 +1,4 @@
+
 (()=>{
 'use strict';
 const $=s=>document.querySelector(s),config=window.RAFIQ_GITHUB||{};
@@ -7,7 +8,7 @@ let token='',rows=[],currentImagePath='',selectedFile=null;
 const apiRoot=`https://api.github.com/repos/${encodeURIComponent(config.owner||'')}/${encodeURIComponent(config.repo||'')}/contents/`;
 const money=n=>new Intl.NumberFormat('en-US').format(Number(n)||0)+' د.ع';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const animalNames={all:'كل الحيوانات 🐾',cats:'القطط 🐈',dogs:'الكلاب 🐕',poultry:'الدواجن 🐔',birds:'الطيور 🐦'};
+const animalNames={all:'كل الحيوانات 🐾',cats:'القطط 🐈',dogs:'الكلاب 🐕',poultry:'الدواجن 🐔',birds:'الطيور 🐦',other:'أخرى 🐾'};
 function message(el,text,ok=false){el.textContent=text;el.classList.toggle('success',ok)}
 function toast(text){const el=$('#toast');el.textContent=text;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2800)}
 function apiHeaders(){return {'Accept':'application/vnd.github+json','Authorization':`Bearer ${token}`,'X-GitHub-Api-Version':'2022-11-28'}}
