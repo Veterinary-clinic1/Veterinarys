@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -11,6 +10,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+.animal-image{display:flex;align-items:center;justify-content:center;overflow:hidden;background:#edf1e7;min-height:170px}
+.animal-image svg{display:block;width:100%;height:170px;max-width:220px}
+.animal-card{overflow:hidden}
+.animal-info{display:flex;flex-direction:column;gap:5px}
+.animal-info b{font-size:18px}
+.animal-info span{font-size:13px}
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -18,6 +25,7 @@
 <nav class="desktop-nav"><a href="#home" class="active">الرئيسية</a><a href="#products">المنتجات</a><a href="#categories">الأقسام</a><a href="#about">عن المتجر</a></nav>
 <div class="top-actions"><button class="icon-btn search-toggle" aria-label="بحث">⌕</button><button class="cart-btn" id="openCart">السلة <span id="cartCount">0</span></button><button class="menu-toggle" id="menuToggle" aria-label="القائمة">☰</button></div>
 </header>
+
 <main id="home">
 <section class="hero wrap">
 <div class="hero-copy">
@@ -33,11 +41,13 @@
 <div class="art-label label-bottom">MADE WITH CARE</div>
 </div>
 </section>
+
 <section class="trust-strip wrap">
 <div><span>✳</span><b>منتجات مختارة</b><small>جودة نهتم بيها</small></div>
 <div><span>♡</span><b>سهولة بالتسوق</b><small>خطوات بسيطة وواضحة</small></div>
 <div><span>➜</span><b>طلب مباشر</b><small>تأكيد الطلب عبر المتجر</small></div>
 </section>
+
 <section class="section wrap" id="categories">
 <div class="section-head"><div><span class="eyebrow">تصفّح حسب احتياجك</span><h2>الأقسام الرئيسية</h2></div><a href="#products" class="text-link">كل المنتجات ←</a></div>
 <div class="category-grid" id="categoryGrid">
@@ -48,15 +58,100 @@
 <button class="category-card" data-category="الإكسسوارات"><span class="category-icon">🦴</span><b>الإكسسوارات</b><small>تفاصيل لأليفك</small></button>
 </div>
 </section>
+
 <section class="section wrap" id="animals">
 <div class="section-head"><div><span class="eyebrow">اختار صديقك</span><h2>تسوّق حسب حيوانك الأليف</h2><p class="section-sub">اختار نوع الحيوان حتى تشوف المنتجات المخصصة إله.</p></div></div>
+
 <div class="animal-grid">
-<button class="animal-card" type="button" data-animal="cats"><div class="animal-image"><img src="assets/animals/cats.png" alt="القطط" loading="lazy"></div><div class="animal-info"><b>القطط</b><span>منتجات ومستلزمات القطط ←</span></div></button>
-<button class="animal-card" type="button" data-animal="dogs"><div class="animal-image"><img src="assets/animals/dogs.png" alt="الكلاب" loading="lazy"></div><div class="animal-info"><b>الكلاب</b><span>منتجات ومستلزمات الكلاب ←</span></div></button>
-<button class="animal-card" type="button" data-animal="poultry"><div class="animal-image"><img src="assets/animals/poultry.png" alt="الدواجن" loading="lazy"></div><div class="animal-info"><b>الدواجن</b><span>منتجات ومستلزمات الدواجن ←</span></div></button>
-<button class="animal-card" type="button" data-animal="birds"><div class="animal-image"><img src="assets/animals/birds.png" alt="الطيور" loading="lazy"></div><div class="animal-info"><b>الطيور</b><span>منتجات ومستلزمات الطيور ←</span></div></button>
+
+<button class="animal-card" type="button" data-animal="cats">
+<div class="animal-image">
+<svg viewBox="0 0 220 170" role="img" aria-label="رسم قطة كرتونية">
+<circle cx="110" cy="88" r="70" fill="#dce7d4"/>
+<path d="M54 76 L58 24 L94 53 Q110 45 126 53 L162 24 L166 78 Q180 120 145 143 Q110 165 75 143 Q40 120 54 76Z" fill="#d39b72"/>
+<path d="M64 63 L65 38 L88 57Z M132 57 L155 38 L156 63Z" fill="#efb5a8"/>
+<ellipse cx="86" cy="91" rx="7" ry="10" fill="#34483b"/>
+<ellipse cx="134" cy="91" rx="7" ry="10" fill="#34483b"/>
+<path d="M101 108 Q110 99 119 108 Q110 119 101 108Z" fill="#bd7771"/>
+<path d="M110 117 Q103 129 94 120 M110 117 Q117 129 126 120" fill="none" stroke="#604a40" stroke-width="3" stroke-linecap="round"/>
+<path d="M51 105 L90 109 M50 119 L90 116 M130 109 L169 105 M130 116 L170 119" stroke="#765c4b" stroke-width="2" stroke-linecap="round"/>
+<circle cx="72" cy="110" r="5" fill="#e8b5a1"/><circle cx="148" cy="110" r="5" fill="#e8b5a1"/>
+</svg>
+</div>
+<div class="animal-info"><b>القطط</b><span>منتجات ومستلزمات القطط ←</span></div>
+</button>
+
+<button class="animal-card" type="button" data-animal="dogs">
+<div class="animal-image">
+<svg viewBox="0 0 220 170" role="img" aria-label="رسم كلب كرتوني">
+<circle cx="110" cy="88" r="70" fill="#e9e4d5"/>
+<path d="M65 60 Q35 38 39 91 Q42 133 75 125 L86 70Z" fill="#986d4e"/>
+<path d="M155 60 Q185 38 181 91 Q178 133 145 125 L134 70Z" fill="#986d4e"/>
+<path d="M63 66 Q65 32 110 32 Q155 32 157 66 L151 119 Q144 151 110 151 Q76 151 69 119Z" fill="#d5a77c"/>
+<ellipse cx="87" cy="91" rx="7" ry="9" fill="#34483b"/>
+<ellipse cx="133" cy="91" rx="7" ry="9" fill="#34483b"/>
+<ellipse cx="110" cy="115" rx="25" ry="19" fill="#f5e8d6"/>
+<path d="M99 108 Q110 98 121 108 Q110 122 99 108Z" fill="#453c36"/>
+<path d="M110 121 Q105 134 94 128 M110 121 Q115 134 126 128" fill="none" stroke="#805b49" stroke-width="3" stroke-linecap="round"/>
+<circle cx="76" cy="110" r="5" fill="#e8b5a1"/><circle cx="144" cy="110" r="5" fill="#e8b5a1"/>
+</svg>
+</div>
+<div class="animal-info"><b>الكلاب</b><span>منتجات ومستلزمات الكلاب ←</span></div>
+</button>
+
+<button class="animal-card" type="button" data-animal="poultry">
+<div class="animal-image">
+<svg viewBox="0 0 220 170" role="img" aria-label="رسم دجاجة كرتونية">
+<circle cx="110" cy="88" r="70" fill="#f0ead2"/>
+<path d="M72 113 Q48 83 75 63 Q103 38 145 66 Q172 91 147 126 Q120 153 86 134Z" fill="#f4d98d"/>
+<path d="M88 56 Q80 35 96 40 Q105 19 115 40 Q135 30 130 57Z" fill="#d77e69"/>
+<path d="M144 83 L171 94 L145 105Z" fill="#dc9a49"/>
+<ellipse cx="124" cy="76" rx="6" ry="8" fill="#34483b"/>
+<path d="M90 91 Q107 78 125 96 Q110 115 90 91Z" fill="#e8c36f"/>
+<path d="M89 132 L86 148 M120 136 L123 148 M77 149 L95 149 M114 149 L132 149" stroke="#c58b42" stroke-width="4" stroke-linecap="round"/>
+</svg>
+</div>
+<div class="animal-info"><b>الدواجن</b><span>منتجات ومستلزمات الدواجن ←</span></div>
+</button>
+
+<button class="animal-card" type="button" data-animal="birds">
+<div class="animal-image">
+<svg viewBox="0 0 220 170" role="img" aria-label="رسم عصفور كرتوني">
+<circle cx="110" cy="88" r="70" fill="#dce9df"/>
+<path d="M61 105 Q56 60 101 49 Q147 39 160 83 Q174 128 129 139 Q82 150 61 105Z" fill="#82ae91"/>
+<path d="M87 96 Q112 65 143 91 Q126 121 91 119Z" fill="#5f9275"/>
+<path d="M151 81 L177 91 L151 102Z" fill="#e2a85c"/>
+<circle cx="132" cy="75" r="6" fill="#34483b"/>
+<path d="M72 126 L49 143 L88 137Z" fill="#6a987b"/>
+<path d="M105 137 L102 151 M129 137 L133 151 M94 152 L111 152 M125 152 L141 152" stroke="#b68c57" stroke-width="3" stroke-linecap="round"/>
+<circle cx="120" cy="93" r="3" fill="#fff"/>
+</svg>
+</div>
+<div class="animal-info"><b>الطيور</b><span>منتجات ومستلزمات الطيور ←</span></div>
+</button>
+
+<button class="animal-card" type="button" data-animal="other">
+<div class="animal-image">
+<svg viewBox="0 0 220 170" role="img" aria-label="رسم آثار أقدام حيوانات">
+<circle cx="110" cy="88" r="70" fill="#e7e2ef"/>
+<g fill="#9b88b5">
+<ellipse cx="110" cy="112" rx="29" ry="24"/>
+<ellipse cx="76" cy="70" rx="13" ry="17" transform="rotate(-25 76 70)"/>
+<ellipse cx="105" cy="55" rx="13" ry="17" transform="rotate(-7 105 55)"/>
+<ellipse cx="137" cy="61" rx="13" ry="17" transform="rotate(18 137 61)"/>
+<ellipse cx="158" cy="87" rx="13" ry="17" transform="rotate(35 158 87)"/>
+</g>
+<path d="M87 112 Q110 133 133 112" fill="none" stroke="#e7e2ef" stroke-width="4" stroke-linecap="round"/>
+<path d="M54 127 Q43 113 54 101 M166 127 Q177 113 166 101" fill="none" stroke="#b4a5c9" stroke-width="4" stroke-linecap="round"/>
+<path d="M110 25 V37 M42 88 H54 M166 88 H178 M110 145 V157" stroke="#b4a5c9" stroke-width="3" stroke-linecap="round"/>
+</svg>
+</div>
+<div class="animal-info"><b>أخرى</b><span>منتجات ومستلزمات متنوعة ←</span></div>
+</button>
+
 </div>
 </section>
+
 <section class="section products-section" id="products">
 <div class="wrap">
 <div class="section-head"><div><span class="eyebrow">اختياراتنا إلك</span><h2>منتجات المتجر</h2><p class="section-sub">تصفّح المنتجات واختار اللي يحتاجه صديقك.</p></div>
@@ -70,20 +165,24 @@
 <div class="empty-state hidden" id="emptyState">ما لقينا منتجات تطابق بحثك حالياً.</div>
 </div>
 </section>
+
 <section class="about-band wrap" id="about">
 <div class="about-icon">🐾</div><div><span class="eyebrow">أهلاً بيك في رفيق</span><h2>اهتمامهم يستاهل الأفضل.</h2><p>متجر يجمع احتياجات الحيوانات الأليفة بمكان واحد، بتجربة تسوّق سهلة وواضحة.</p></div><a class="primary-btn" href="#products">ابدأ التسوق ←</a>
 </section>
 </main>
+
 <footer><div class="wrap footer-inner">
 <a class="brand" href="#home"><span class="brand-mark">✦</span><span><b>رَفيق</b><small>كل ما يحتاجه أليفك</small></span></a>
 <span>© <span id="year"></span> رفيق. جميع الحقوق محفوظة.</span><a href="#home">العودة للأعلى ↑</a>
 </div></footer>
+
 <div class="overlay" id="overlay"></div>
 <aside class="cart-drawer" id="cartDrawer" aria-label="سلة المشتريات">
 <div class="drawer-head"><div><span class="eyebrow">قائمة مشترياتك</span><h3>سلة التسوق</h3></div><button class="close-btn" id="closeCart" aria-label="إغلاق">×</button></div>
 <div class="cart-items" id="cartItems"></div>
 <div class="cart-bottom"><div class="total-line"><span>المجموع</span><b id="cartTotal">0 د.ع</b></div><button class="primary-btn checkout-btn" id="checkoutBtn">إكمال الطلب ←</button><small>سيتم تأكيد تفاصيل الطلب قبل الإرسال.</small></div>
 </aside>
+
 <div class="modal-backdrop hidden" id="checkoutModal">
 <form class="checkout-modal" id="checkoutForm">
 <button type="button" class="close-btn modal-close" id="closeCheckout">×</button>
@@ -96,6 +195,7 @@
 <small class="demo-note">يُرسل الطلب مباشرة إلى بوت التليگرام، ويتأكد صاحب المتجر من وصول الرسالة.</small>
 </form>
 </div>
+
 <script src="telegram-config.js"></script>
 <script src="app.js"></script>
 <script>if('scrollRestoration' in history)history.scrollRestoration='manual';window.scrollTo(0,0);</script>
