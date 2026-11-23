@@ -1,5 +1,17 @@
 [
   {
+    "id": "279e1a86-6078-435b-9b8c-6cbd6b2aa261",
+    "name": "Test 2",
+    "price": 2000,
+    "category": "أغذية الحيوانات",
+    "description": "",
+    "tag": "",
+    "is_active": true,
+    "in_stock": true,
+    "image_path": "assets/products/f2102051-e2a0-40b0-9e31-c8069a3035d5.jpg",
+    "image_url": "assets/products/f2102051-e2a0-40b0-9e31-c8069a3035d5.jpg"
+  },
+  {
     "id": "b58c9bd1-9eb1-487d-a001-234d9de1dcc7",
     "name": "Test 1",
     "price": 2000,
